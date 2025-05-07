@@ -1,6 +1,10 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { ApplicationConfig } from '@angular/core';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideClientHydration(withEventReplay())]
+  providers: [
+    provideAnimations(),
+    provideHttpClient()
+  ]
 };

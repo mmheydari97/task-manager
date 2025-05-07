@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-between align-items-center">
+    <div [class.text-decoration-line-through]="task.completed">
+      <h5 class="mb-1">{{ task.title }}</h5>
+      <p class="mb-1" *ngIf="task.description">{{ task.description }}</p>
+      <div class="d-flex gap-2 mb-1">
+        <span class="badge" [ngClass]="getPriorityClass(task.priority)">
+          {{ getPriorityLabel(task.priority) }}
+        </span>
+        <small *ngIf="task.dueDate">Due: {{ task.dueDate | date:'mediumDate' }}</small>
+        <small>Created: {{ task.createdAt | date:'short' }}</small>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button 
+        class="btn btn-sm btn-success" 
+        [disabled]="task.completed"
+        (click)="onComplete()">
+        ✓
+      </button>
+      <button 
+        class="btn btn-sm btn-danger" 
+        (click)="onDelete()">
+        ✕
+      </button>
+    </div>
+  </div>
